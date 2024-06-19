@@ -1,0 +1,24 @@
+# Example Data Governance Policy YAML Definition
+policy:
+  id: "DATA_CLASSIFICATION_POLICY"
+  name: "Data Classification Policy"
+  description: "Defines rules for classifying data based on sensitivity and confidentiality."
+  scope: "Data Classification"
+  criteria:
+    - name: "Sensitive Data Classification"
+      description: "Data containing personally identifiable information (PII) must be classified as sensitive."
+      conditions:
+        - attribute: "Data Classification"
+          operator: "equals"
+          value: "Sensitive"
+    - name: "Public Data Classification"
+      description: "Non-sensitive data can be classified as public."
+      conditions:
+        - attribute: "Data Classification"
+          operator: "equals"
+          value: "Public"
+  enforcement:
+    action: "Notify"
+    notification:
+      recipients: ["data_stewards@example.com"]
+      message: "Policy violation detected: Data asset not classified correctly."
